@@ -29,7 +29,31 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 		return view('admin.index');
 	});
 
-	Route::get('/case', function(){
-		return view('admin.case.index');
+	Route::get('/local', function(){
+		return view('admin.localCase.index');
+	});
+
+	Route::get('/global', function(){
+		return view('admin.globalCase.index');
+	});
+
+	Route::get('/province', function(){
+		return view('admin.province.index');
+	});
+
+	Route::get('/city', function(){
+		return view('admin.city.index');
+	});
+
+	Route::get('/district', function(){
+		return view('admin.district.index');
+	});
+
+	Route::get('/subdistrict', function(){
+		return view('admin.subDistrict.index');
+	});
+
+	Route::get('/rw', function(){
+		return view('admin.rw.index');
 	});
 });

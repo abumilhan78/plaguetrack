@@ -23,26 +23,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item active">
+            <a href="../widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+                <span class="right badge badge-danger">New</span>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{url("admin")}}" class="nav-link @yield('dasbor')">
-                  <i class="fas fa-tachometer-alt nav-icon"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-            </ul>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+         <!--  <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-viruses"></i>
               <p>
                 Case
                 <i class="fas fa-angle-left right"></i>
@@ -52,24 +44,51 @@
               
               <li class="nav-item">
                 <a href="{{url("admin/case")}}" class="nav-link @yield('case')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-map nav-icon"></i>
                   <p>Case (Local)</p>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a href="{{url("tabel")}}" class="nav-link @yield('case')">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-globe-americas nav-icon"></i>
                   <p>Case (Global)</p>
                 </a>
               </li>
 
               
             </ul>
-          </li>
-           <li class="nav-item has-treeview menu-open">
+          </li> -->
+
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-map-marked-alt"></i>
+              <p>
+                Plague Case
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="{{url("admin/local")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-map nav-icon"></i>
+                  <p>Local Case</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{url("admin/global")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-globe-americas nav-icon"></i>
+                  <p>Global Case</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-map-marked-alt"></i>
               <p>
                 Area
                 <i class="right fas fa-angle-left"></i>
@@ -77,23 +96,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url("admin")}}" class="nav-link @yield('dasbor')">
-                  <i class="fas fa-tachometer-alt nav-icon"></i>
+                <a href="{{url("admin/province")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>Provinsi</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin")}}" class="nav-link @yield('dasbor')">
-                  <i class="fas fa-tachometer-alt nav-icon"></i>
+                <a href="{{url("admin/city")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>City</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin")}}" class="nav-link @yield('dasbor')">
-                  <i class="fas fa-tachometer-alt nav-icon"></i>
-                  <p>Dashboard</p>
+                <a href="{{url("admin/district")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-place-of-worship nav-icon"></i>
+                  <p>District</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{url("admin/subdistrict")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-place-of-worship nav-icon"></i>
+                  <p>Sub-District</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{url("admin/rw")}}" class="nav-link @yield('dasbor')">
+                  <i class="fas fa-place-of-worship nav-icon"></i>
+                  <p>RW</p>
                 </a>
               </li>
             </ul>

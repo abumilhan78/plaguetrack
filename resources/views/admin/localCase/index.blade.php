@@ -16,7 +16,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">COVID-19 Local Case</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -459,7 +459,7 @@
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
-    </section>
+  </section>
 
 @endsection
 
