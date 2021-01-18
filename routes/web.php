@@ -19,9 +19,17 @@ Route::get('/', function () {
 
 Route::resource('province', ProvinceController::class);
 
-Route::view('/tes', 'admin.index');
+Route::view('/tes', 'admin.index')->name('tes');
 Route::view('/tabel', 'admin.case.index');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
+	Route::get('/', function(){
+		return view('admin.index');
+	});
+
+	Route::get('/case', function(){
+		return view('admin.case.index');
+	});
+});
