@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item active">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{url('admin')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -32,37 +32,10 @@
               </p>
             </a>
           </li>
-         <!--  <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-viruses"></i>
-              <p>
-                Case
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              
-              <li class="nav-item">
-                <a href="{{url("admin/case")}}" class="nav-link @yield('case')">
-                  <i class="fas fa-map nav-icon"></i>
-                  <p>Case (Local)</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="{{url("tabel")}}" class="nav-link @yield('case')">
-                  <i class="fas fa-globe-americas nav-icon"></i>
-                  <p>Case (Global)</p>
-                </a>
-              </li>
-
-              
-            </ul>
-          </li> -->
-
+        
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-map-marked-alt"></i>
+              <i class="nav-icon fas fa-viruses"></i>
               <p>
                 Plague Case
                 <i class="right fas fa-angle-left"></i>
