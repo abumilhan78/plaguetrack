@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="{{asset("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
 @endpush
 
-@section('case', 'active')
+@section('prov', 'active')
 
 @section('content')
 
@@ -15,7 +15,7 @@
           <div class="col-12">
             
 
-            <div class="card">
+            <div class="card mt-4">
               <div class="card-header">
                 <h3 class="card-title">Province</h3>
                 <div class="card-tools">
@@ -37,15 +37,7 @@
                   <tbody>
                   
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->

@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item active">
-            <a href="{{url('admin')}}" class="nav-link">
+            <a href="{{url('admin')}}" class="nav-link @yield('dasbor')">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -44,14 +44,14 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="{{url("admin/local")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/local")}}" class="nav-link @yield('loc')">
                   <i class="fas fa-map nav-icon"></i>
                   <p>Local Case</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin/global")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/global")}}" class="nav-link @yield('glob')">
                   <i class="fas fa-globe-americas nav-icon"></i>
                   <p>Global Case</p>
                 </a>
@@ -69,35 +69,35 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url("admin/province")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/province")}}" class="nav-link @yield('prov')">
                   <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>Provinsi</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin/city")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/city")}}" class="nav-link @yield('cit')">
                   <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>City</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin/district")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/district")}}" class="nav-link @yield('dist')">
                   <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>District</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin/subdistrict")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/subdistrict")}}" class="nav-link @yield('subdist')">
                   <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>Sub-District</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{url("admin/rw")}}" class="nav-link @yield('dasbor')">
+                <a href="{{url("admin/rw")}}" class="nav-link @yield('rw')">
                   <i class="fas fa-place-of-worship nav-icon"></i>
                   <p>RW</p>
                 </a>

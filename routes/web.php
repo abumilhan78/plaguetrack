@@ -19,9 +19,6 @@ Route::get('/', function () {
 
 Route::resource('province', ProvinceController::class);
 
-Route::view('/tes', 'admin.index')->name('tes');
-Route::view('/tabel', 'admin.case.index');
-
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
