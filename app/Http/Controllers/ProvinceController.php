@@ -14,7 +14,8 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        return "ini dari controller provinsi";
+        $prov = Province::all();
+        return view('admin.province.index', compact('prov'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.province.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Province::create($request->all());
+        return redirect()->route('province.index')->with('toast_success', 'Data Provinsi Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +59,7 @@ class ProvinceController extends Controller
      */
     public function edit(Province $province)
     {
-        //
+        return view('admin.province.edit', compact('category'));
     }
 
     /**
@@ -69,7 +71,12 @@ class ProvinceController extends Controller
      */
     public function update(Request $request, Province $province)
     {
-        //
+        Province::where('id', $province->id)
+            ->update([
+                'nama' => $request->nama,
+                'nipd' => $request->nipd
+            ]);
+        return redirect()->route('province.index')->with(['message'=>"Data $province->nama Berhasil Di Ubah"]);
     }
 
     /**
@@ -80,6 +87,7 @@ class ProvinceController extends Controller
      */
     public function destroy(Province $province)
     {
-        //
+        Province::destroy($province->id);
+        return redirect()->route('category.index')->with(['message'=>'Category Berhasil DiHapus']);
     }
 }

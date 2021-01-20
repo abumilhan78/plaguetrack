@@ -27,15 +27,15 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>No</th>
+                    <th>Nama Kelurahan</th>
+                    <th>Nama RW</th>
+                    <th>Created At</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+                    
                   </tbody>
                   
                 </table>

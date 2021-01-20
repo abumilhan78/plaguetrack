@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\DistrictController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('province', ProvinceController::class);
 
 Auth::routes();
 
@@ -25,6 +26,12 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 	Route::get('/', function(){
 		return view('admin.index');
 	});
+
+	Route::resource('/province', ProvinceController::class);
+
+	Route::resource('/city', CityController::class);
+
+	Route::resource('/district', DistrictController::class);
 
 	Route::get('/local', function(){
 		return view('admin.localCase.index');
@@ -34,17 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 		return view('admin.globalCase.index');
 	});
 
-	Route::get('/province', function(){
-		return view('admin.province.index');
-	});
-
-	Route::get('/city', function(){
-		return view('admin.city.index');
-	});
-
-	Route::get('/district', function(){
-		return view('admin.district.index');
-	});
+	
 
 	Route::get('/subdistrict', function(){
 		return view('admin.subDistrict.index');

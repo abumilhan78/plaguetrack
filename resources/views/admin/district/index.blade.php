@@ -19,7 +19,7 @@
               <div class="card-header">
                 <h3 class="card-title">District</h3>
                 <div class="card-tools">
-                  <a href="" class="btn btn-primary">Add Data</a>
+                  <a href="{{route('district.create')}}" class="btn btn-primary">Add Data</a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -27,11 +27,11 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>No</th>
+                    <th>Nama Kota</th>
+                    <th>Nama Kecamatan</th>
+                    <th>Created At</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>

@@ -7,6 +7,7 @@
 
   <title>AdminLTE 3 | Dashboard 2</title>
   @stack('cssdatatable')
+  @stack('css')
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset("assets/adminlte/plugins/fontawesome-free/css/all.min.css")}}">
   <!-- overlayScrollbars -->
@@ -80,5 +81,8 @@
 <!-- PAGE SCRIPTS -->
 <script src="{{asset("assets/adminlte/dist/js/pages/dashboard2.js")}}"></script>
 @stack('jsdatatable')
+@stack('script')
+@include('sweetalert::alert')
+
 </body>
 </html>
