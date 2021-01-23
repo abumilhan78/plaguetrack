@@ -35,7 +35,22 @@
                   </tr>
                   </thead>
                   <tbody>
-                  
+                   @foreach($dist as $key)
+                      <tr>
+                          <td>{{$loop->iteration}}</td>
+                          <td>{{$key->city->city_name}}</td>
+                          <td>{{$key->dist_name}}</td>
+                          <td>{{$key->created_at}}</td>
+                          <td>
+                            <a href="{{route('district.edit', $key->id)}}" class="btn btn-outline-info">Edit</a>
+                            <form action="{{route('district.destroy', $key->id)}}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-outline-danger">Hapus</button>
+                            </form>
+                          </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                   
                 </table>

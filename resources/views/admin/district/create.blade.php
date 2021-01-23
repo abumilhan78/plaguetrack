@@ -19,21 +19,21 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('city.store')}}" method="POST">
+              <form action="{{route('district.store')}}" method="POST">
               	@csrf
           		{{ method_field('POST') }}
                 <div class="card-body">
                   <div class="form-group">
                   <label>Kota</label>
-                  <select class="form-control select2bs4" name="prov_id" style="width: 100%;">
+                  <select class="form-control select2bs4" name="city_id" style="width: 100%;">
                     @foreach($city as $key)
                     <option value="{{$key->id}}">{{$key->city_name}}</option>
                     @endforeach
                   </select>
                 </div>
                   <div class="form-group">
-                    <label for="cityInput">Nama Kota</label>
-                    <input type="text" name="city_name" class="form-control" id="cityInput" placeholder="Enter City Name">
+                    <label for="distInput">Nama Kecamatan</label>
+                    <input type="text" name="dist_name" class="form-control" id="distInput" placeholder="Enter City Name">
                   </div>
                 <!-- /.card-body -->
 

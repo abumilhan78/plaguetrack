@@ -61,7 +61,8 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        $prov = Province::all();
+        return view('admin.city.edit', compact('city', 'prov'));
     }
 
     /**
@@ -73,7 +74,12 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        //
+        City::where('id', $city->id)
+            ->update([
+                'prov_id' => $request->prov_id,
+                'city_name' => $request->city_name
+            ]);
+        return redirect()->route('city.index')->with('toast_success',"Data $city->city_name Berhasil Di Ubah!");
     }
 
     /**
@@ -84,6 +90,7 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        City::destroy($city->id);
+        return redirect()->route('admin.city.index')->with('toast_success',"Data $city->city_name Berhasil Di Hapus!");
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subdistrict;
+use App\Models\District;
 use Illuminate\Http\Request;
 
 class SubdistrictController extends Controller
@@ -14,7 +15,8 @@ class SubdistrictController extends Controller
      */
     public function index()
     {
-        //
+        $subdist = Subdistrict::all();
+        return view('admin.subDistrict.index', compact('subdist'));
     }
 
     /**
@@ -24,7 +26,8 @@ class SubdistrictController extends Controller
      */
     public function create()
     {
-        //
+        $district = District::all();
+        return view('admin.subDistrict.create', compact('district'));
     }
 
     /**
@@ -35,7 +38,8 @@ class SubdistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subdistrict::create($request->all());
+        return redirect()->route('subdistrict.index')->with('toast_success', 'Data Kelurahan/Desa Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +61,8 @@ class SubdistrictController extends Controller
      */
     public function edit(Subdistrict $subdistrict)
     {
-        //
+        $district = District::all();
+        return view('admin.subDistrict.edit', compact('district', 'subdistrict'));
     }
 
     /**
@@ -69,7 +74,12 @@ class SubdistrictController extends Controller
      */
     public function update(Request $request, Subdistrict $subdistrict)
     {
-        //
+        Subdistrict::where('id', $subdistrict->id)
+            ->update([
+                'dist_id' => $request->dist_id,
+                'subdist_name' => $request->subdist_name
+            ]);
+        return redirect()->route('subdistrict.index')->with('toast_success',"Data $subdistrict->subdist_name Berhasil Di Ubah!");
     }
 
     /**

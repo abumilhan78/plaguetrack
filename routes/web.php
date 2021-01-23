@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\SubdistrictController;
+use App\Http\Controllers\RwController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,10 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 
 	Route::resource('/district', DistrictController::class);
 
+	Route::resource('/subdistrict', SubdistrictController::class);
+
+	Route::resource('/rw', RwController::class);
+
 	Route::get('/local', function(){
 		return view('admin.localCase.index');
 	});
@@ -42,12 +48,4 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 	});
 
 	
-
-	Route::get('/subdistrict', function(){
-		return view('admin.subDistrict.index');
-	});
-
-	Route::get('/rw', function(){
-		return view('admin.rw.index');
-	});
 });

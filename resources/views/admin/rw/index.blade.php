@@ -19,7 +19,7 @@
               <div class="card-header">
                 <h3 class="card-title">RW</h3>
                 <div class="card-tools">
-                  <a href="" class="btn btn-primary">Add Data</a>
+                  <a href="{{route('rw.create')}}" class="btn btn-primary">Add Data</a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -35,7 +35,22 @@
                   </tr>
                   </thead>
                   <tbody>
-                    
+                    @foreach($rw as $key)
+                      <tr>
+                          <td>{{$loop->iteration}}</td>
+                          <td>{{$key->subdist->subdist_name}}</td>
+                          <td>{{$key->rw_name}}</td>
+                          <td>{{$key->created_at}}</td>
+                          <td>
+                            <a href="{{route('rw.edit', $key->id)}}" class="btn btn-outline-info">Edit</a>
+                            <form action="{{route('rw.destroy', $key->id)}}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-outline-danger">Hapus</button>
+                            </form>
+                          </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                   
                 </table>

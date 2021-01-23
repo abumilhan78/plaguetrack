@@ -24,7 +24,7 @@
           		{{ method_field('POST') }}
                 <div class="card-body">
                   <div class="form-group">
-                  <label>Minimal</label>
+                  <label>Provinsi</label>
                   <select class="form-control select2bs4" name="prov_id" style="width: 100%;">
                     @foreach($prov as $key)
                     <option value="{{$key->id}}">{{$key->prov_name}}</option>

@@ -42,8 +42,8 @@
                           <td>{{$key->city_name}}</td>
                           <td>{{$key->created_at}}</td>
                           <td>
-                            <a href="{{route('province.edit', $key->id)}}" class="btn btn-outline-info">Edit</a>
-                            <form action="{{route('province.destroy', $key->id)}}" method="post" class="d-inline">
+                            <a href="{{route('city.edit', $key->id)}}" class="btn btn-outline-info">Edit</a>
+                            <form action="{{route('city.destroy', $key->id)}}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-outline-danger">Hapus</button>

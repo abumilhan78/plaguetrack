@@ -59,7 +59,7 @@ class ProvinceController extends Controller
      */
     public function edit(Province $province)
     {
-        return view('admin.province.edit', compact('category'));
+        return view('admin.province.edit', compact('province'));
     }
 
     /**
@@ -73,10 +73,9 @@ class ProvinceController extends Controller
     {
         Province::where('id', $province->id)
             ->update([
-                'nama' => $request->nama,
-                'nipd' => $request->nipd
+                'prov_name' => $request->prov_name
             ]);
-        return redirect()->route('province.index')->with(['message'=>"Data $province->nama Berhasil Di Ubah"]);
+        return redirect()->route('province.index')->with('toast_success',"Data $province->prov_name Berhasil Di Ubah!");
     }
 
     /**

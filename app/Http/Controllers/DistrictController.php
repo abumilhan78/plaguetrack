@@ -38,7 +38,8 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        District::create($request->all());
+        return redirect()->route('district.index')->with('toast_success', 'Data Kecamatan Berhasil Ditambahkan');
     }
 
     /**
@@ -60,7 +61,8 @@ class DistrictController extends Controller
      */
     public function edit(District $district)
     {
-        //
+        $city = City::all();
+        return view('admin.district.edit', compact('district', 'city'));
     }
 
     /**
@@ -72,7 +74,12 @@ class DistrictController extends Controller
      */
     public function update(Request $request, District $district)
     {
-        //
+        District::where('id', $district->id)
+            ->update([
+                'city_id' => $request->city_id,
+                'dist_name' => $request->dist_name
+            ]);
+        return redirect()->route('district.index')->with('toast_success',"Data $district->dist_name Berhasil Di Ubah!");
     }
 
     /**
@@ -83,6 +90,7 @@ class DistrictController extends Controller
      */
     public function destroy(District $district)
     {
-        //
+        District::destroy($district->id);
+        return redirect()->route('admin.district.index')->with('toast_success',"Data $district->dist_name Berhasil Di Hapus!");
     }
 }
