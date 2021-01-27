@@ -14,7 +14,8 @@ class TrackController extends Controller
      */
     public function index()
     {
-        //
+        $local = Track::with('rw.subdist.district.city.province')->get();
+        return view('admin.localCase.index', compact('local'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TrackController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.localCase.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class TrackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Track::create($request->all());
+        return redirect()->route('local.index')->with('toast_success', 'Data Kasus Berhasil Ditambahkan');
     }
 
     /**
@@ -46,7 +48,7 @@ class TrackController extends Controller
      */
     public function show(Track $track)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +57,10 @@ class TrackController extends Controller
      * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function edit(Track $track)
+    public function edit($id)
     {
-        //
+        $track = Track::findOrFail($id);
+        return view('admin.localCase.edit', compact('track'));
     }
 
     /**
@@ -67,9 +70,18 @@ class TrackController extends Controller
      * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Track $track)
+    public function update(Request $request, $id)
     {
-        //
+
+        Track::where('id', $id)
+            ->update([
+                'rw_id' => $request->rw_id,
+                'sembuh' => $request->sembuh,
+                'meninggal' => $request->meninggal,
+                'positif' => $request->positif,
+                'reaktif' => $request->reaktif
+            ]);
+        return redirect()->route('local.index')->with('toast_success',"Data Kasus Berhasil Di Ubah!");
     }
 
     /**

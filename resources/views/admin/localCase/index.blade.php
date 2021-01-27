@@ -1,5 +1,5 @@
 @extends('template.admin.master')
-
+@section('loc', 'active')
 @push('cssdatatable')
   <link rel="stylesheet" href="{{asset("assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
   <link rel="stylesheet" href="{{asset("assets/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
@@ -18,7 +18,7 @@
               <div class="card-header">
                 <h3 class="card-title">COVID-19 Local Case</h3>
                 <div class="card-tools">
-                  <a href="" class="btn btn-primary">Add Data</a>
+                  <a href="{{route('local.create')}}" class="btn btn-primary">Add Data</a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -26,16 +26,35 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>RW ID</th>
+                    <th>No</th>
+                    <th>Lokasi</th>
+                    <th>RW</th>
                     <th>Sembuh</th>
                     <th>Meninggal</th>
                     <th>Positif</th>
                     <th>Reaktif</th>
                     <th>Created At</th>
+                    <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+                    @foreach($local as $key)
+                    <tr>
+                      <td>{{$loop->iteration}}</td>
+                      <td>Desa/Kelurahan : {{$key->rw->subdist->subdist_name}}<br>
+                        Kecamatan : {{$key->rw->subdist->district->dist_name}}<br>
+                        Kab/Kota : {{$key->rw->subdist->district->city->city_name}}<br>
+                        Provinsi : {{$key->rw->subdist->district->city->province->prov_name}}
+                      </td>
+                      <td>{{$key->rw->rw_name}}</td>
+                      <td>{{$key->sembuh}}</td>
+                      <td>{{$key->meninggal}}</td>
+                      <td>{{$key->positif}}</td>
+                      <td>{{$key->reaktif}}</td>
+                      <td>{{$key->created_at}}</td>
+                      <td><a href="{{route('local.edit', $key->id)}}" class="btn btn-info">Edit</a></td>
+                    </tr>
+                    @endforeach
                   </tbody>
                   
                 </table>

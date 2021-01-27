@@ -6,6 +6,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\SubdistrictController;
 use App\Http\Controllers\RwController;
+use App\Http\Controllers\TrackController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,9 +40,8 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 
 	Route::resource('/rw', RwController::class);
 
-	Route::get('/local', function(){
-		return view('admin.localCase.index');
-	});
+	Route::resource('/local', TrackController::class);
+
 
 	Route::get('/global', function(){
 		return view('admin.globalCase.index');
