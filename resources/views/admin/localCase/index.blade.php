@@ -23,7 +23,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped table-dark">
                   <thead>
                   <tr>
                     <th>No</th>
@@ -52,7 +52,14 @@
                       <td>{{$key->positif}}</td>
                       <td>{{$key->reaktif}}</td>
                       <td>{{$key->created_at}}</td>
-                      <td><a href="{{route('local.edit', $key->id)}}" class="btn btn-info">Edit</a></td>
+                      <td>
+                        <a href="{{route('local.edit', $key->id)}}" class="btn btn-outline-info">Edit</a>
+                        <form action="{{route('local.destroy', $key->id)}}" method="post" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-outline-danger">Hapus</button>
+                        </form>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>

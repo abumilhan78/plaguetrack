@@ -90,8 +90,9 @@ class TrackController extends Controller
      * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Track $track)
+    public function destroy($id)
     {
-        //
+        Track::destroy($id);
+        return redirect()->route('local.index')->with('toast_success',"Data Kasus Berhasil Di Hapus!");
     }
 }
