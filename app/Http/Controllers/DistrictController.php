@@ -38,6 +38,10 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'city_id' => 'required',
+            'dist_name' => 'required',
+        ]);
         District::create($request->all());
         return redirect()->route('district.index')->with('toast_success', 'Data Kecamatan Berhasil Ditambahkan');
     }

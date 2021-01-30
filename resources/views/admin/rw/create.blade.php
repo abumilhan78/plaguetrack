@@ -25,15 +25,26 @@
                 <div class="card-body">
                   <div class="form-group">
                   <label>Kelurahan/Desa</label>
-                  <select class="form-control select2bs4" name="subdist_id" style="width: 100%;">
+                  <select class="form-control @error('subdist_id') is-invalid @enderror" id="subdist" name="subdist_id" style="width: 100%;">
+                    <option value="">Pilih RW</option>
                     @foreach($subdist as $key)
                     <option value="{{$key->id}}">{{$key->subdist_name}}</option>
                     @endforeach
                   </select>
+                  @error('subdist_id')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                  @enderror
                 </div>
                   <div class="form-group">
                     <label for="distInput">Nama RW</label>
-                    <input type="text" name="rw_name" class="form-control" id="distInput" placeholder="Enter RW Name">
+                    <input type="text" name="rw_name" class="form-control @error('rw_name') is-invalid @enderror" id="distInput" placeholder="Enter RW Name">
+                    @error('rw_name')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                    @enderror
                   </div>
                 <!-- /.card-body -->
 
@@ -56,8 +67,8 @@
 @push('script')
 <script src="{{asset("assets/adminlte/plugins/select2/js/select2.full.min.js")}}"></script>
 <script type="text/javascript">
-  $('.select2bs4').select2({
-      theme: 'bootstrap4'
+  $('#subdist').select2({
+      placeholder : 'Select a RW'
     })
 </script>
 @endpush

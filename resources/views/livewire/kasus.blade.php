@@ -1,7 +1,7 @@
 <div class="card-body">
 	<div class="form-group" >
 		<label>Provinsi</label>
-		<select class="form-control select2bs4" wire:model="selectedProv" style="width: 100%;">
+		<select class="form-control" id="prov" wire:model="selectedProv" style="width: 100%;">
 			<option value="" selected>pilih provinsi</option>
 		 	@foreach($provinces as $prov)
 		 		<option value="{{$prov->id}}">{{$prov->prov_name}}</option>
@@ -83,3 +83,11 @@
 	@endif
 
 </div>
+
+@push('jsdatatable')
+	<script type="text/javascript">
+		$('#prov').on('change', function(e){
+			@this.set('selectedProv', e.target.value);
+		})
+	</script>
+@endpush

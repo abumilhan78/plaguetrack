@@ -38,6 +38,10 @@ class SubdistrictController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'dist_id' => 'required',
+            'subdist_name' => 'required',
+        ]);
         Subdistrict::create($request->all());
         return redirect()->route('subdistrict.index')->with('toast_success', 'Data Kelurahan/Desa Berhasil Ditambahkan');
     }

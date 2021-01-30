@@ -38,6 +38,10 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'prov_id' => 'required',
+            'city_name' => 'required',
+        ]);
         City::create($request->all());
         return redirect()->route('city.index')->with('toast_success', 'Data Kota Berhasil Ditambahkan');
     }

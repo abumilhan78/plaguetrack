@@ -36,6 +36,9 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'prov_name' => 'required',
+        ]);
         Province::create($request->all());
         return redirect()->route('province.index')->with('toast_success', 'Data Provinsi Berhasil Ditambahkan');
     }

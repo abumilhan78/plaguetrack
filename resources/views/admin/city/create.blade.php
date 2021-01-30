@@ -1,5 +1,5 @@
 @extends('template.admin.master')
-@section('city', 'active')
+@section('cit', 'active')
 
 @push('css')
   <link rel="stylesheet" href="{{asset("assets/adminlte/plugins/select2/css/select2.min.css")}}">
@@ -25,16 +25,29 @@
                 <div class="card-body">
                   <div class="form-group">
                   <label>Provinsi</label>
-                  <select class="form-control select2bs4" name="prov_id" style="width: 100%;">
+                  <select class="form-control @error('prov_id') is-invalid @enderror" id="prov" name="prov_id" style="width: 100%;">
+                    <option value="" selected>pilih provinsi</option>
                     @foreach($prov as $key)
                     <option value="{{$key->id}}">{{$key->prov_name}}</option>
                     @endforeach
                   </select>
+                  @error('prov_id')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                  @enderror
                 </div>
                   <div class="form-group">
                     <label for="cityInput">Nama Kota</label>
-                    <input type="text" name="city_name" class="form-control" id="cityInput" placeholder="Enter City Name">
+                    <input type="text" name="city_name" class="form-control @error('city_name') is-invalid @enderror" id="cityInput" placeholder="Enter City Name">
+                    @error('city_name')
+                  <div class="invalid-feedback">
+                    {{ $message }}
                   </div>
+                  @enderror
+                  </div>
+                  
+                </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -56,8 +69,10 @@
 @push('script')
 <script src="{{asset("assets/adminlte/plugins/select2/js/select2.full.min.js")}}"></script>
 <script type="text/javascript">
-  $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
+  $('#prov').select2({
+    placeholder : "Select a province",
+  });
+
+  
 </script>
 @endpush

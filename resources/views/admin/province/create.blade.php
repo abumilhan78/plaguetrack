@@ -20,8 +20,12 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="provinceInput">Nama Provinsi</label>
-                    <input type="text" name="prov_name" class="form-control" id="provinceInput" placeholder="Enter Province Name">
+                    <input type="text" name="prov_name" class="form-control @error('prov_name') is-invalid @enderror" id="provinceInput" placeholder="Enter Province Name">
+                   @error('prov_name')
+                    <div class="invalid-feedback">{{$message}}</div>
+                   @enderror
                   </div>
+                </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">

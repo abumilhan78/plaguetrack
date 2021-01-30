@@ -38,6 +38,10 @@ class RwController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'subdist_id' => 'required',
+            'rw_name' => 'required',
+        ]);
         Rw::create($request->all());
         return redirect()->route('rw.index')->with('toast_success', 'Data RW Berhasil Ditambahkan');
     }

@@ -25,16 +25,28 @@
                 <div class="card-body">
                   <div class="form-group">
                   <label>Kota</label>
-                  <select class="form-control select2bs4" name="city_id" style="width: 100%;">
+                  <select class="form-control @error('city_id') is-invalid @enderror" id="city" name="city_id" style="width: 100%;">
+                    <option value="">Pilih Kota</option>
                     @foreach($city as $key)
                     <option value="{{$key->id}}">{{$key->city_name}}</option>
                     @endforeach
                   </select>
+                  @error('city_id')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                  @enderror
                 </div>
                   <div class="form-group">
                     <label for="distInput">Nama Kecamatan</label>
-                    <input type="text" name="dist_name" class="form-control" id="distInput" placeholder="Enter City Name">
+                    <input type="text" name="dist_name" class="form-control @error('dist_name') is-invalid @enderror" id="distInput" placeholder="Enter City Name">
+                    @error('dist_name')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                    @enderror
                   </div>
+                </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -56,8 +68,8 @@
 @push('script')
 <script src="{{asset("assets/adminlte/plugins/select2/js/select2.full.min.js")}}"></script>
 <script type="text/javascript">
-  $('.select2bs4').select2({
-      theme: 'bootstrap4'
+  $('#city').select2({
+      placeholder : 'Select a city'
     })
 </script>
 @endpush

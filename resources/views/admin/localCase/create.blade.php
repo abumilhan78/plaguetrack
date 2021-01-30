@@ -45,7 +45,13 @@
 @push('script')
   
 <script src="{{asset("assets/adminlte/plugins/select2/js/select2.full.min.js")}}"></script>
+<script type="text/javascript">
+  $('#prov').select2({
+    placeholder : "Select a province",
+  });
 
+  
+</script>
 
 
 

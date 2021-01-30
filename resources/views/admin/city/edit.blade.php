@@ -1,5 +1,5 @@
 @extends('template.admin.master')
-@section('city', 'active')
+@section('cit', 'active')
 
 @section('content')
 
