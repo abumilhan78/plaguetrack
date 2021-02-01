@@ -12,6 +12,11 @@ class ProvinceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function api()
+    {
+        return Province::all();
+    }
+
     public function index()
     {
         $prov = Province::all();
