@@ -26,6 +26,6 @@ Route::get('search/{key}', [plagueAPI::class, 'search']);
 
 Route::get('/province', [ProvinceController::class, 'index']);
 Route::post('/province/store', [ProvinceController::class, 'store']);
-Route::get('/province/{id?}', [ProvinceController::class, 'show']);
-Route::put('/province/update/{id?}', [ProvinceController::class, 'update']);
-Route::delete('/province/{id?}', [ProvinceController::class, 'destroy']);
+Route::get('/province/{id}', [ProvinceController::class, 'show']);
+Route::put('/province/update/{id}', [ProvinceController::class, 'update']);
+Route::delete('/province/{id}', [ProvinceController::class, 'destroy']);
