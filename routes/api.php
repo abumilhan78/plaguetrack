@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\plagueAPI;
-use App\Http\Controllers\API\ProvinceController;
+use App\Http\Controllers\API\ApiController;
+use App\Http\Controllers\API\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,10 @@ Route::resource('data', plagueAPI::class);
 
 Route::get('search/{key}', [plagueAPI::class, 'search']);
 
-Route::get('/province', [ProvinceController::class, 'index']);
-Route::post('/province/store', [ProvinceController::class, 'store']);
-Route::get('/province/{id}', [ProvinceController::class, 'show']);
-Route::put('/province/update/{id}', [ProvinceController::class, 'update']);
-Route::delete('/province/{id}', [ProvinceController::class, 'destroy']);
+Route::get('/prov', [ApiController::class, 'sumProvince']);
+Route::get('/province/{id}', [ApiController::class, 'provXcity']);
+// Route::post('/province/store', [ProvinceController::class, 'store']);
+// Route::put('/province/update/{id}', [ProvinceController::class, 'update']);
+// Route::delete('/province/{id}', [ProvinceController::class, 'destroy']);
+
+Route::get('/track', [ApiController::class, 'sumTrack']);
