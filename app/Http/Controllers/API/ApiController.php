@@ -316,4 +316,55 @@ class ApiController extends Controller
     	];
     	return response()->json($res, 200);
     }
+
+    public function positif()
+    {
+    	$nowDay = Carbon::now()->format('d'); 
+    	$dt_now = DB::table('tracks')
+	    			->select(DB::raw('SUM(positif) as positif'))
+	    			->whereDay('created_at', '=' , $nowDay)
+	    			->get();
+    	$dt = DB::table('tracks')->select(DB::raw('SUM(positif) as positif'))
+    				->get();
+    	$res = [
+    		'success' => true,
+    		'data' => ['hari_ini' => $dt_now, 'total' => $dt],
+    		'message' => 'berhasil'
+    	];
+    	return response()->json($res, 200);
+    }
+
+    public function meninggal()
+    {
+    	$nowDay = Carbon::now()->format('d'); 
+    	$dt_now = DB::table('tracks')
+	    			->select(DB::raw('SUM(meninggal) as meninggal'))
+	    			->whereDay('created_at', '=' , $nowDay)
+	    			->get();
+    	$dt = DB::table('tracks')->select(DB::raw('SUM(meninggal) as meninggal'))
+    				->get();
+    	$res = [
+    		'success' => true,
+    		'data' => ['hari_ini' => $dt_now, 'total' => $dt],
+    		'message' => 'berhasil'
+    	];
+    	return response()->json($res, 200);
+    }
+
+    public function sembuh()
+    {
+    	$nowDay = Carbon::now()->format('d'); 
+    	$dt_now = DB::table('tracks')
+	    			->select(DB::raw('SUM(sembuh) as sembuh'))
+	    			->whereDay('created_at', '=' , $nowDay)
+	    			->get();
+    	$dt = DB::table('tracks')->select(DB::raw('SUM(sembuh) as sembuh'))
+    				->get();
+    	$res = [
+    		'success' => true,
+    		'data' => ['hari_ini' => $dt_now, 'total' => $dt],
+    		'message' => 'berhasil'
+    	];
+    	return response()->json($res, 200);
+    }
 }
