@@ -19,7 +19,7 @@ use App\Http\Controllers\TrackController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.index');
 });
 
 
