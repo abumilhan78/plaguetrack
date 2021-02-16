@@ -7,6 +7,7 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\SubdistrictController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\TrackController;
+use App\Http\Controllers\frontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,8 @@ use App\Http\Controllers\TrackController;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::get('/', [frontController::class, 'index']);
+
 
 
 Auth::routes();
