@@ -13,7 +13,7 @@ class frontController extends Controller
     {
     	$nowDay = Carbon::now()->format('Y-m-d');
     	$dt = DB::table('tracks')
-    			->select(DB::raw('provinces.prov_name as provinsi'), DB::raw('SUM(tracks.positif) as positif'), DB::raw('SUM(tracks.sembuh) as sembuh'), DB::raw('SUM(tracks.meninggal) as meninggal'))
+    			->select(DB::raw('provinces.prov_name as provinsi'), DB::raw('SUM(tracks.positif) as positif'), DB::raw('SUM(tracks.sembuh) as sembuh'), DB::raw('SUM(tracks.meninggal) as meninggal'), DB::raw('provinces.id as id'))
     			->join('rws', 'rws.id', '=', 'tracks.rw_id')
     			->join('subdistricts', 'subdistricts.id', '=', 'rws.subdist_id')
     			->join('districts', 'districts.id', '=', 'subdistricts.dist_id')
@@ -43,5 +43,22 @@ class frontController extends Controller
             "meninggal" => $men_glob
         ];
     	return view('front.index', compact('dt', 'dt_global', 'sum_glob'));
+    }
+
+    public function singleCity($id)
+    {
+    	$dt = DB::table('tracks')
+    			->select(DB::raw('provinces.prov_name as provinsi'), DB::raw('cities.city_name as kota'), DB::raw('SUM(tracks.positif) as positif'), DB::raw('SUM(tracks.sembuh) as sembuh'), DB::raw('SUM(tracks.meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'tracks.rw_id')
+    			->join('subdistricts', 'subdistricts.id', '=', 'rws.subdist_id')
+    			->join('districts', 'districts.id', '=', 'subdistricts.dist_id')
+    			->join('cities', 'cities.id', '=', 'districts.city_id')
+    			->join('provinces', 'provinces.id', '=', 'cities.prov_id')
+    			->where('provinces.id', $id)
+    			->groupBy('cities.city_name')
+    			->get();
+    	
+    	return view('front.provXcity', compact('dt'));
+        // return $dt[0]->provinsi;
     }
 }

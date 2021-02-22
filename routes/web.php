@@ -20,6 +20,7 @@ use App\Http\Controllers\frontController;
 */
 
 Route::get('/', [frontController::class, 'index']);
+Route::get('/prov/{id}', [frontController::class, 'singleCity']);
 
 
 
