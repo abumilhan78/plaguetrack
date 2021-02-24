@@ -19,7 +19,6 @@ class frontController extends Controller
     			->join('districts', 'districts.id', '=', 'subdistricts.dist_id')
     			->join('cities', 'cities.id', '=', 'districts.city_id')
     			->join('provinces', 'provinces.id', '=', 'cities.prov_id')
-    			->groupBy('provinces.prov_name')
     			->get();
         $datas =  Http::get('https://api.kawalcorona.com/')->json();
         $dt_global = [];
