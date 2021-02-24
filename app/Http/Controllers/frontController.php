@@ -13,7 +13,11 @@ class frontController extends Controller
     {
     	$nowDay = Carbon::now()->format('Y-m-d');
     	$dt = DB::table('tracks')
-    			->select(DB::raw('provinces.prov_name as provinsi'), DB::raw('SUM(tracks.positif) as positif'), DB::raw('SUM(tracks.sembuh) as sembuh'), DB::raw('SUM(tracks.meninggal) as meninggal'), DB::raw('provinces.id as id'))
+    			->select(DB::raw('provinces.prov_name as provinsi'),
+                    DB::raw('SUM(tracks.positif) as positif'),
+                    DB::raw('SUM(tracks.sembuh) as sembuh'),
+                    DB::raw('SUM(tracks.meninggal) as meninggal'),
+                    DB::raw('provinces.id as id_prov'))
     			->join('rws', 'rws.id', '=', 'tracks.rw_id')
     			->join('subdistricts', 'subdistricts.id', '=', 'rws.subdist_id')
     			->join('districts', 'districts.id', '=', 'subdistricts.dist_id')
