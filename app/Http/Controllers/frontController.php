@@ -48,7 +48,7 @@ class frontController extends Controller
     public function singleCity($id)
     {
     	$dt = DB::table('tracks')
-    			->select(DB::raw('provinces.prov_name as provinsi'), DB::raw('cities.city_name as kota'), DB::raw('SUM(tracks.positif) as positif'), DB::raw('SUM(tracks.sembuh) as sembuh'), DB::raw('SUM(tracks.meninggal) as meninggal'))
+    			->select(DB::raw('provinces.prov_name as provinsi'), DB::raw('cities.city_name as kota'), DB::raw('SUM(tracks.positif) as positif'), DB::raw('SUM(tracks.sembuh) as sembuh'), DB::raw('SUM(tracks.meninggal) as meninggal'), DB::raw('provinces.id as id_prov'), DB::raw('cities.id as id_city'))
     			->join('rws', 'rws.id', '=', 'tracks.rw_id')
     			->join('subdistricts', 'subdistricts.id', '=', 'rws.subdist_id')
     			->join('districts', 'districts.id', '=', 'subdistricts.dist_id')
@@ -59,6 +59,29 @@ class frontController extends Controller
     			->get();
     	
     	return view('front.provXcity', compact('dt'));
-        // return $dt[0]->provinsi;
+    }
+
+    public function singleDist($idProv, $idCity)
+    {
+        $dt = DB::table('tracks')
+    			->select(
+                    DB::raw('provinces.prov_name as provinsi'),
+                    DB::raw('cities.city_name as kota'),
+                    DB::raw('districts.dist_name as kecamatan'),
+                    DB::raw('SUM(tracks.positif) as positif'),
+                    DB::raw('SUM(tracks.sembuh) as sembuh'),
+                    DB::raw('SUM(tracks.meninggal) as meninggal'),
+                    DB::raw('provinces.id as id_prov'),
+                    DB::raw('cities.id as id_city'))
+    			->join('rws', 'rws.id', '=', 'tracks.rw_id')
+    			->join('subdistricts', 'subdistricts.id', '=', 'rws.subdist_id')
+    			->join('districts', 'districts.id', '=', 'subdistricts.dist_id')
+    			->join('cities', 'cities.id', '=', 'districts.city_id')
+    			->join('provinces', 'provinces.id', '=', 'cities.prov_id')
+    			->where('provinces.id', $idProv)
+                ->where('cities.id', $idCity)
+    			->groupBy('districts.dist_name')
+    			->get();
+        return view('front.cityXdist', compact('dt'));
     }
 }

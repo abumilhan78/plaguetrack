@@ -71,7 +71,7 @@
                 @foreach($dt as $prov => $value)
                 <tr>
                   <th scope="row">{{$loop->iteration}}</th>
-                  <td><a class="text-decoration-none" href="{{url("prov/$value->id")}}">{{ucwords(strtolower($value->provinsi))}}</a></td>
+                  <td><a class="text-decoration-none" href="{{url("detail/$value->id")}}">{{ucwords(strtolower($value->provinsi))}}</a></td>
                   <td>{{$value->positif}}</td>
                   <td>{{$value->sembuh}}</td>
                   <td>{{$value->meninggal}}</td>

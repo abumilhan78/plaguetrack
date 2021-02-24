@@ -20,7 +20,10 @@ use App\Http\Controllers\frontController;
 */
 
 Route::get('/', [frontController::class, 'index']);
-Route::get('/prov/{id}', [frontController::class, 'singleCity']);
+Route::group(['prefix' => 'detail'], function(){
+	Route::get('/{prov}', [frontController::class, 'singleCity']);
+	Route::get('/{prov}/{city}', [frontController::class, 'singleDist']);
+});
 
 
 
