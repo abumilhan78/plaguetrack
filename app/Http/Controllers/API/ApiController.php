@@ -38,7 +38,7 @@ class ApiController extends Controller
     				->get();
     	$res = [
     		'success' => true,
-    		'data' => ['name' => 'Indonesia','hari_ini' => $dt_now, 'total' => $dt],
+    		'data' => [['name' => 'Indonesia','hari_ini' => $dt_now, 'total' => $dt]],
     		'message' => 'berhasil'
     	];
     	return response()->json($res, 200);
