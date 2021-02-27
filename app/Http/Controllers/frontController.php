@@ -62,7 +62,7 @@ class frontController extends Controller
     			->join('cities', 'cities.id', '=', 'districts.city_id')
     			->join('provinces', 'provinces.id', '=', 'cities.prov_id')
     			->where('provinces.id', $id)
-    			->groupBy('cities.city_name', 'provinces.id')
+    			->groupBy('cities.id', 'provinces.id')
     			->get();
     	
     	return view('front.provXcity', compact('dt'));
