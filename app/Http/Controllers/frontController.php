@@ -28,24 +28,27 @@ class frontController extends Controller
         $datas =  Http::get('https://api.kawalcorona.com/')->json();
         $dt_global = [];
         $pos_glob = 0; $sem_glob = 0; $men_glob =0;
-        foreach ($datas as $key => $value) {
-            $raw = $value['attributes'];
-            $res = [
-                'Negara' => $raw['Country_Region'],
-                'Positif' => $raw['Confirmed'],
-                'Meninggal' => $raw['Deaths'],
-                'Sembuh' => $raw['Recovered']
+        if (!is_null($datas)) {
+            foreach ($datas as $key => $value) {
+                $raw = $value['attributes'];
+                $res = [
+                    'Negara' => $raw['Country_Region'],
+                    'Positif' => $raw['Confirmed'],
+                    'Meninggal' => $raw['Deaths'],
+                    'Sembuh' => $raw['Recovered']
+                ];
+                array_push($dt_global, $res);
+                $pos_glob += $raw['Confirmed'];
+                $sem_glob += $raw['Recovered'];
+                $men_glob += $raw['Deaths'];
+            }
+            $sum_glob = [
+                "positif" => $pos_glob,
+                "sembuh" => $sem_glob,
+                "meninggal" => $men_glob
             ];
-            array_push($dt_global, $res);
-            $pos_glob += $raw['Confirmed'];
-            $sem_glob += $raw['Recovered'];
-            $men_glob += $raw['Deaths'];
         }
-        $sum_glob = [
-            "positif" => $pos_glob,
-            "sembuh" => $sem_glob,
-            "meninggal" => $men_glob
-        ];
+        
     	return view('front.index', compact('dt', 'dt_global', 'sum_glob'));
     }
 
@@ -59,7 +62,7 @@ class frontController extends Controller
     			->join('cities', 'cities.id', '=', 'districts.city_id')
     			->join('provinces', 'provinces.id', '=', 'cities.prov_id')
     			->where('provinces.id', $id)
-    			->groupBy('cities.city_name')
+    			->groupBy('cities.id')
     			->get();
     	
     	return view('front.provXcity', compact('dt'));

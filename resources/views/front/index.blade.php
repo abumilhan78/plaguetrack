@@ -41,7 +41,7 @@
       <div class="card-body d-flex">
           <div>
             <h5 class="card-title">Total Meninggal</h5>
-            <p class="card-text">{{number_format($sum_glob['meninggal'])}} <span class=' d-block'>jiwa</span></p>
+            <p class="card-text">@if(!is_null($sum_glob)){{number_format($sum_glob['meninggal'])}} @else Data Sedang Maintenance @endif<span class=' d-block'>jiwa</span></p>
           </div>
           <div class="">
             <img src="{{asset('assets/img/grave.png')}}" width='200' height='150' alt="">
