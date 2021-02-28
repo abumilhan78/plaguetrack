@@ -2,10 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\plagueAPI;
 use App\Http\Controllers\API\ApiController;
-use App\Http\Controllers\API\globalController;
-use App\Http\Controllers\API\CityController;
+use App\Http\Controllers\API\mobileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +47,6 @@ Route::get('/provinsi/{id}', [ApiController::class, 'singleProv']);
 Route::get('/positif', [ApiController::class, 'positif']);
 Route::get('/meninggal', [ApiController::class, 'meninggal']);
 Route::get('/sembuh', [ApiController::class, 'sembuh']);
+
+// Data untuk mobile
+Route::get('/mobile/indo', [mobileController::class, 'indo']);
