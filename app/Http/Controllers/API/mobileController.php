@@ -17,7 +17,10 @@ class mobileController extends Controller
 	    			->select(DB::raw('SUM(positif) as positif'), DB::raw('SUM(sembuh) as sembuh'), DB::raw('SUM(meninggal) as meninggal'))
 	    			->whereDay('created_at', '=' , $nowDay)
 	    			->get();
-    	$dt = DB::table('tracks')->select(DB::raw('SUM(positif) as positif'), DB::raw('SUM(sembuh) as sembuh'), DB::raw('SUM(meninggal) as meninggal'))
+    	$dt = DB::table('tracks')->select(DB::raw('SUM(positif) as positif'),
+				DB::raw('SUM(sembuh) as sembuh'),
+				DB::raw('SUM(meninggal) as meninggal'),
+				DB::raw('SUM(reaktif) as reaktif'))
     				->get();
     	$res = [
     		'success' => true,
