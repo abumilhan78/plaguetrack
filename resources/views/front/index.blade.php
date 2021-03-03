@@ -19,7 +19,7 @@
         <div class="card-body d-flex justify-content-between">
           <div>
             <h5 class="card-title">Total Positif</h5>
-            <p class="card-text">{{number_format($sum_glob['positif'])}} <span class=' d-block'>jiwa</span></p>
+            <p class="card-text">@if(isset($sum_glob)){{number_format($sum_glob['positif'])}} @else Data Sedang Maintenance @endif<span class=' d-block'>jiwa</span></p>
           </div>
           <div class="">
             <img src="{{asset('assets/img/corona.png')}}" width='200' height='150' alt="">
@@ -30,7 +30,7 @@
       <div class="card-body d-flex">
           <div>
             <h5 class="card-title">Total Sembuh</h5>
-            <p class="card-text">{{number_format($sum_glob['sembuh'])}} <span class=' d-block'>jiwa</span></p>
+            <p class="card-text">@if(isset($sum_glob)){{number_format($sum_glob['sembuh'])}}@else Data Sedang Maintenance @endif <span class=' d-block'>jiwa</span></p>
           </div>
           <div class="">
             <img src="{{asset('assets/img/distance.png')}}" width='200' height='150' alt="">
@@ -41,7 +41,7 @@
       <div class="card-body d-flex">
           <div>
             <h5 class="card-title">Total Meninggal</h5>
-            <p class="card-text">@if(!is_null($sum_glob)){{number_format($sum_glob['meninggal'])}} @else Data Sedang Maintenance @endif<span class=' d-block'>jiwa</span></p>
+            <p class="card-text">@if(isset($sum_glob)){{number_format($sum_glob['meninggal'])}} @else Data Sedang Maintenance @endif<span class=' d-block'>jiwa</span></p>
           </div>
           <div class="">
             <img src="{{asset('assets/img/grave.png')}}" width='200' height='150' alt="">
@@ -102,6 +102,8 @@
                 </tr>
               </thead>
               <tbody>
+                @if(isset($sum_glob))
+                    
                 @foreach($dt_global as $glob => $value)
                 <tr>
                   <th scope="row">{{$loop->iteration}}</th>
@@ -111,6 +113,8 @@
                   <td>{{number_format($value['Meninggal'])}}</td>
                 </tr>
                 @endforeach
+                
+                @endif
               </tbody>
             </table>
           </div>

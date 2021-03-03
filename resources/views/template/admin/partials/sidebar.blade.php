@@ -50,12 +50,7 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="{{url("admin/global")}}" class="nav-link @yield('glob')">
-                  <i class="fas fa-globe-americas nav-icon"></i>
-                  <p>Global Case</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
 

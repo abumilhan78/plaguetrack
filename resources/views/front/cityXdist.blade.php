@@ -15,13 +15,13 @@
             <div class="container">
               <div class="card p-3 br-2 bg-banner shadow" >
                 <div class="card-body">
-                  <h5 class="card-title text-white mb-4">Data Statistik Coronavirus di Indonesia Berdasarkan Provinsi {{$dt[0]->kota}}</h5>
+                  <h5 class="card-title text-white mb-4">Data Statistik Coronavirus di Indonesia di {{$dt[0]->kota}}</h5>
                   <div class="container bg-primary" style="border-radius: 15px">
                     <table class="table table-dark table-striped rounded">
                       <thead>
                         <tr>
                           <th scope="col">No</th>
-                          <th scope="col">Provinsi</th>
+                          <th scope="col">Kecamatan</th>
                           <th scope="col">Positif</th>
                           <th scope="col">Sembuh</th>
                           <th scope="col">Meninggal</th>

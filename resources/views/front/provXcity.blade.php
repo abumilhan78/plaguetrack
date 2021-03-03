@@ -20,7 +20,7 @@
                       <thead>
                         <tr>
                           <th scope="col">No</th>
-                          <th scope="col">Provinsi</th>
+                          <th scope="col">Kota</th>
                           <th scope="col">Positif</th>
                           <th scope="col">Sembuh</th>
                           <th scope="col">Meninggal</th>

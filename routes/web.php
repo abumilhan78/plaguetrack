@@ -27,8 +27,7 @@ Route::group(['prefix' => 'detail'], function(){
 
 
 
-Auth::routes();
-
+Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 	Route::get('/', function(){
 		return view('admin.index');

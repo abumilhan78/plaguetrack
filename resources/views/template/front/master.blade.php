@@ -76,7 +76,7 @@
 
   @yield('main')
 
-<footer class="main-footer bg-cyan p-3 text-white text-center mt-5 fixed-bottom trans">
+<footer class="main-footer bg-cyan p-3 text-white text-center mt-5 trans">
     <small>Made with <span class="fas fa-heart"></span> by <a href="https://github.com/abumilhan78">Mochammad Qaysa Al-Haq</a>.</small>
     
 </footer>
