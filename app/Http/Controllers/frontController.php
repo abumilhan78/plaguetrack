@@ -25,31 +25,31 @@ class frontController extends Controller
     			->join('provinces', 'provinces.id', '=', 'cities.prov_id')
     			->groupBy('provinces.id')
     			->get();
-        // $datas =  Http::get('https://api.kawalcorona.com/')->json();
-        // $dt_global = [];
-        // $pos_glob = 0; $sem_glob = 0; $men_glob =0;
-        // if (!is_null($datas)) {
-        //     foreach ($datas as $key => $value) {
-        //         $raw = $value['attributes'];
-        //         $res = [
-        //             'Negara' => $raw['Country_Region'],
-        //             'Positif' => $raw['Confirmed'],
-        //             'Meninggal' => $raw['Deaths'],
-        //             'Sembuh' => $raw['Recovered']
-        //         ];
-        //         array_push($dt_global, $res);
-        //         $pos_glob += $raw['Confirmed'];
-        //         $sem_glob += $raw['Recovered'];
-        //         $men_glob += $raw['Deaths'];
-        //     }
-        //     $sum_glob = [
-        //         "positif" => $pos_glob,
-        //         "sembuh" => $sem_glob,
-        //         "meninggal" => $men_glob
-        //     ];
-        // }
+        $datas =  Http::get('https://api.kawalcorona.com/')->json();
+        $dt_global = [];
+        $pos_glob = 0; $sem_glob = 0; $men_glob =0;
+        if (!is_null($datas)) {
+            foreach ($datas as $key => $value) {
+                $raw = $value['attributes'];
+                $res = [
+                    'Negara' => $raw['Country_Region'],
+                    'Positif' => $raw['Confirmed'],
+                    'Meninggal' => $raw['Deaths'],
+                    'Sembuh' => $raw['Recovered']
+                ];
+                array_push($dt_global, $res);
+                $pos_glob += $raw['Confirmed'];
+                $sem_glob += $raw['Recovered'];
+                $men_glob += $raw['Deaths'];
+            }
+            $sum_glob = [
+                "positif" => $pos_glob,
+                "sembuh" => $sem_glob,
+                "meninggal" => $men_glob
+            ];
+        }
         
-    	return view('front.index', compact('dt'));
+    	return view('front.index', compact('dt','dt_global','sum_glob'));
     }
 
     public function singleCity($id)
