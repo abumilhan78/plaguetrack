@@ -20,10 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('data', plagueAPI::class);
-
-Route::get('search/{key}', [plagueAPI::class, 'search']);
-
 Route::get('/province/{id}', [ApiController::class, 'provXcity']);
 // Route::post('/province/store', [ProvinceController::class, 'store']);
 // Route::put('/province/update/{id}', [ProvinceController::class, 'update']);
@@ -36,7 +32,6 @@ Route::get('/kelurahan', [ApiController::class, 'sumSubDist']);
 Route::get('/kecamatan', [ApiController::class, 'sumDist']);
 Route::get('/kota', [ApiController::class, 'sumCity']);
 Route::get('/provinsi', [ApiController::class, 'sumProv']);
-Route::get('/global', [globalController::class, 'dataGlobal']);
 
 //Statistik Tunggal
 Route::get('/rw/{id}', [ApiController::class, 'singleRW']);

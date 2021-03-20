@@ -8,6 +8,7 @@ use App\Http\Controllers\SubdistrictController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\frontController;
+use App\Http\Controllers\Report\ReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,12 +27,13 @@ Route::group(['prefix' => 'detail'], function(){
 });
 
 
-
 Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 	Route::get('/', function(){
 		return view('admin.index');
 	});
+	
+	Route::get('/print', [ReportController::class, 'printPdf']);
 
 	Route::resource('/province', ProvinceController::class);
 
@@ -45,6 +47,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function (){
 
 	Route::resource('/local', TrackController::class);
 
+	Route::group(['prefix' => 'report'], function (){
+		Route::get('/local-pdf', [ReportController::class, 'pdfLocal']);
+		Route::get('/local-xls', [ReportController::class, 'xlsLocal']);
+		Route::get('/prov', [ReportController::class, 'pdfProv']);
+	});
 
 	Route::get('/global', function(){
 		return view('admin.globalCase.index');

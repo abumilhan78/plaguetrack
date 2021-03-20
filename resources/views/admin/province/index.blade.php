@@ -19,6 +19,7 @@
               <div class="card-header">
                 <h3 class="card-title">Province</h3>
                 <div class="card-tools">
+                  <a href="{{url('admin/report/prov')}}" class="btn btn-info">Cetak Data</a>
                   <a href="{{route('province.create')}}" class="btn btn-primary">Add Data</a>
                 </div>
               </div>

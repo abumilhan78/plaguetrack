@@ -12,6 +12,8 @@ class TrackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
         $local = Track::with('rw.subdist.district.city.province')->get();

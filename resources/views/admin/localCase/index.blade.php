@@ -18,6 +18,8 @@
               <div class="card-header">
                 <h3 class="card-title">COVID-19 Local Case</h3>
                 <div class="card-tools">
+                  <a href="{{url('admin/report/local-pdf')}}" class="btn btn-info">Cetak pdf</a>
+                  <a href="{{url('admin/report/local-xls')}}" class="btn btn-info">Cetak Excel</a>
                   <a href="{{route('local.create')}}" class="btn btn-primary">Add Data</a>
                 </div>
               </div>

@@ -7,7 +7,6 @@
 
   <title>AdminLTE 3 | Dashboard 2</title>
   @stack('cssdatatable')
-  @stack('css')
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
@@ -18,6 +17,8 @@
   <link rel="stylesheet" href="{{asset("assets/adminlte/dist/css/adminlte.min.css")}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  @stack('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed text-sm">
 <div class="wrapper">
